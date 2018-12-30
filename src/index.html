@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Sleepy</title>
   <link rel="stylesheet" type="text/css" href="./style.css">
+  <link rel="icon" href="./favicon.ico">
   <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
   <script>const config = require(__dirname + '/config.json');</script>
   <script>const start = require(__dirname + '/start.js');</script>
@@ -13,9 +14,9 @@
   <script>require('angular');</script>
   <script>if (window.module) module = window.module;</script>
   <script>
-  var favicon = document.createElement('link');
+  /*var favicon = document.createElement('link');
   favicon.rel = 'icon';
-  favicon.href = __dirname + '/favicon.ico';
+  favicon.href = __dirname + '/favicon.ico';*/
   /*var style = document.createElement('link');
   style.rel = 'stylesheet';
   style.type = 'text/css';
@@ -47,22 +48,16 @@
 </head>
 <body>
   <div id="wrapper">
+    <div id="top">
+      <img id="icon" alt="[icon]" src="./icon.png">
+      <h3>Sleepy</h3>
+    </div>
     <div id="left">
+      <a id="server1" onclick="show(server1);">Server_name</a>
+      <a id="newServer" onclick="addServer();">+</a>
       <a id="settings" onclick="settings();">settings</a>
     </div>
     <div id="main">
-      <div id="info">
-        <p>Server is <span id="updown">stopped</span><script>ping();</script></p>
-        <p>IP: {{config.ip}}</p>
-      </div>
-      <div id="start" onclick="start();">
-        <p>Start</p>
-      </div>
-      <div id="stop" onclick="stop();">
-        <p>Stop</p>
-      </div>
-    </div>
-    <div id="right">
 
     </div>
   </div>
