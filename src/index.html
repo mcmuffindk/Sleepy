@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html ng-app="Sleepy" ng-controller="settings">
+<head>
+  <meta charset="UTF-8">
+  <title>Sleepy</title>
+  <link rel="stylesheet" type="text/css" href="./style.css">
+  <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+  <script>const config = require(__dirname + '/config.json');</script>
+  <script>const start = require(__dirname + '/start.js');</script>
+  <script>const stop = require(__dirname + '/stop.js');</script>
+  <script>const ping = require(__dirname + '/ping.js');</script>
+  <script>const path = require('path');</script>
+  <script>require('angular');</script>
+  <script>if (window.module) module = window.module;</script>
+  <script>
+  var favicon = document.createElement('link');
+  favicon.rel = 'icon';
+  favicon.href = __dirname + '/favicon.ico';
+  /*var style = document.createElement('link');
+  style.rel = 'stylesheet';
+  style.type = 'text/css';
+  style.href = __dirname + '/style.css';*/
+  </script>
+  <script>
+  var app = angular.module('Sleepy', []);
+  app.controller('settings', function($scope) {
+    $scope.config = config;
+  });
+  </script>
+  <script>
+  function settings() {
+    document.getElementById('settings').setAttribute('onclick','');
+    const remote = require('electron').remote;
+    const BrowserWindow = remote.BrowserWindow;
+    let win = new BrowserWindow({
+      alwaysOnTop: true,
+      resizable: false,
+      frame: true,
+      width: 800,
+      height: 600
+    });
+    win.on('close', function () { win = null; document.getElementById('settings').setAttribute('onclick','settings();'); });
+    win.loadURL(path.join('file://', __dirname, 'settings.html'));
+    win.show();
+  }
+  </script>
+</head>
+<body>
+  <div id="wrapper">
+    <div id="left">
+      <a id="settings" onclick="settings();">settings</a>
+    </div>
+    <div id="main">
+      <div id="info">
+        <p>Server is <span id="updown">stopped</span><script>ping();</script></p>
+        <p>IP: {{config.ip}}</p>
+      </div>
+      <div id="start" onclick="start();">
+        <p>Start</p>
+      </div>
+      <div id="stop" onclick="stop();">
+        <p>Stop</p>
+      </div>
+    </div>
+    <div id="right">
+
+    </div>
+  </div>
+</body>
+</html>

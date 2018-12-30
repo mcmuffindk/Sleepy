@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="Sleepy" ng-controller="settings">
+<head>
+  <meta charset="UTF-8">
+  <title>Settings</title>
+  <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+  <script>require('angular');</script>
+  <script>const remote = require('electron').remote;</script>
+  <script>const config = require(__dirname + '/config.json');</script>
+  <script>const save = require(__dirname + '/change_config.js');</script>
+  <script>if (window.module) module = window.module;</script>
+  <script>
+  var link = document.createElement('link');
+  link.rel = 'icon';
+  link.href = __dirname + '/favicon.ico';
+  </script>
+  <script>
+			var app = angular.module('Sleepy', []);
+			app.controller('settings', function($scope) {
+				$scope.config = config;
+			});
+		</script>
+  </head>
+<body>
+  <div id="wrapper">
+    <form id="settings">
+      <h3>Server</h3>
+      <p>IP:</p><input name="ip" type="text" value="{{config.ip}}" oninput="save('ip', document.forms.settings.ip.value);">
+      <p>port:</p><input name="port" type="text" value="{{config.port}}" oninput="save('port', document.forms.settings.port.value)">
+      <p>MAC:</p><input name="MAC" type="text" value="{{config.MAC}}" oninput="save('MAC', document.forms.settings.MAC.value)">
+      <p>username:</p><input name="username" type="text" value="{{config.username}}" oninput="save('username', document.forms.settings.username.value)">
+      <p>password:</p><input name="password" type="password" value="{{config.password}}" oninput="save('password', document.forms.settings.password.value)">
+      <p>key:</p><input name="key" type="text" value="{{config.key}}" oninput="save('key', document.forms.settings.key.value)">
+      <p>passphrase:</p><input name="passphrase" type="password" value="{{config.passphrase}}" oninput="save('passphrase', document.forms.settings.passphrase.value)">
+    </form>
+  </div>
+</body>
+</html>

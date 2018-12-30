@@ -1,0 +1,31 @@
+{
+  "name": "sleepy",
+  "version": "1.0.0",
+  "description": "Enables you to control the powerstate of your NAS",
+  "main": "./src/main.js",
+  "dependencies": {
+    "angular": "^1.7.5",
+    "electron-compile": "^6.4.3",
+    "electron-squirrel-startup": "^1.0.0",
+    "ssh2": "^0.6.1",
+    "wakeonlan": "^0.1.0"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "electron-forge": "^5.2.3",
+    "electron-prebuilt-compile": "3.0.0"
+  },
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
+  },
+  "keywords": [],
+  "author": "McMuffinDK",
+  "license": "MIT",
+  "config": {
+    "forge": "./forge.config.js"
+  }
+}
