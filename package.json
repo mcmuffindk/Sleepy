@@ -4,7 +4,7 @@
   "description": "Enables you to control the powerstate of your NAS",
   "main": "./src/main.js",
   "dependencies": {
-    "angular": "^1.7.5",
+    "angular": "^1.8.3",
     "electron-compile": "^6.4.3",
     "electron-squirrel-startup": "^1.0.0",
     "ssh2": "^0.6.1",
